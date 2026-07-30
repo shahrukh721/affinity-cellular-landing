@@ -122,14 +122,8 @@
   .countbar .cb-hurry .gold{color:var(--gold);}
   .countbar .cb-sub{font-size:16px;color:#d5dde7;margin-top:3px;line-height:1.35;}
   .count-right{text-align:center;}
-  .count-units{display:flex;gap:14px;justify-content:center;}
-  .cunit{
-    background:#fff;border-radius:8px;width:76px;padding:10px 6px 8px;
-    box-shadow:0 2px 6px rgba(0,0,0,.25);
-  }
-  .cunit .cu-num{color:var(--red);font-size:32px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;}
-  .cunit .cu-lbl{color:var(--navy);font-size:11px;font-weight:800;letter-spacing:1px;margin-top:4px;}
-  .count-note{font-size:11.5px;font-weight:700;letter-spacing:.8px;color:#d5dde7;margin-top:10px;}
+  .cb-static{font-size:18px;font-weight:700;color:#fff;line-height:1.45;}
+  .count-note{font-size:11.5px;font-weight:700;letter-spacing:.8px;color:#d5dde7;margin-top:8px;}
 
   /* ============ CALCULATOR ============ */
   .calc-section{padding:44px 0 10px;}
@@ -330,6 +324,16 @@
   }
   .fc-agent img{width:100%;height:100%;object-fit:cover;object-position:top;}
 
+  /* ============ FOOTER ============ */
+  .site-footer{background:var(--navy-deep);color:#aab8c9;padding:30px 0 36px;border-top:1px solid rgba(255,255,255,.08);}
+  .footer-inner{max-width:1160px;margin:0 auto;padding:0 24px;}
+  .f-links{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:14px;font-weight:700;margin-bottom:18px;}
+  .f-links a{color:#fff;}
+  .f-links a:hover{text-decoration:underline;}
+  .f-links span{color:#5d7189;}
+  .site-footer p{font-size:11.5px;line-height:1.6;margin-bottom:10px;color:#aab8c9;}
+  .site-footer p a{color:#cdd9e6;text-decoration:underline;}
+
   /* ============ RESPONSIVE ============ */
   @media (max-width: 1080px){
     h1{font-size:42px;}
@@ -467,17 +471,12 @@
       </svg>
     </div>
     <div class="cb-copy">
-      <div class="cb-hurry"><span class="gold">HURRY!</span> THIS OFFER WON&rsquo;T LAST!</div>
+      <div class="cb-hurry"><span class="gold">LIMITED-TIME OFFER:</span> 3 MONTH FREE TRIAL</div>
       <div class="cb-sub">Thousands of seniors switch<br>every month.</div>
     </div>
     <div class="count-right">
-      <div class="count-units">
-        <div class="cunit"><div class="cu-num" id="cd-days">02</div><div class="cu-lbl">DAYS</div></div>
-        <div class="cunit"><div class="cu-num" id="cd-hrs">14</div><div class="cu-lbl">HRS</div></div>
-        <div class="cunit"><div class="cu-num" id="cd-min">37</div><div class="cu-lbl">MIN</div></div>
-        <div class="cunit"><div class="cu-num" id="cd-sec">26</div><div class="cu-lbl">SEC</div></div>
-      </div>
-      <div class="count-note">3 MONTH FREE TRIAL IS ONLY AVAILABLE FOR A LIMITED TIME.</div>
+      <div class="cb-static">Available to qualifying new customers,<br>while this promotion lasts.</div>
+      <div class="count-note">SEE FULL OFFER TERMS BELOW.</div>
     </div>
   </div>
 </section>
@@ -546,7 +545,7 @@
         </button>
         <div class="secure-note">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5d6a78" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-          Your information is secure and never shared.
+          Your information is secure and handled per the&nbsp;<a href="https://affinitycellular.com/Support/Policy" target="_blank" rel="noopener" style="text-decoration:underline;color:#5d6a78;">Privacy Policy</a>.
         </div>
       </div>
 
@@ -786,27 +785,30 @@
   <div class="fc-agent"><img src="images/agent-headset.jpg" alt="U.S.-based customer support specialist"></div>
 </section>
 
+<!-- ================= LEGAL FOOTER ================= -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="f-links">
+      <a href="https://affinitycellular.com/Support/Policy" target="_blank" rel="noopener">Privacy Policy</a>
+      <span>|</span>
+      <a href="https://affinitycellular.com/Support/Terms" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+      <span>|</span>
+      <a href="https://affinitycellular.com/Support/Returns" target="_blank" rel="noopener">Return Policy</a>
+      <span>|</span>
+      <a href="https://affinitycellular.com/" target="_blank" rel="noopener">AffinityCellular.com</a>
+      <span>|</span>
+      <a href="tel:8557638221">855-763-8221</a>
+    </div>
+    <p>Savings estimates shown by this calculator are for illustration only. They are based on the information you enter and typical plan pricing; your actual savings will vary depending on your current plan, usage, taxes and fees, and the Affinity Cellular plan you select. The calculator does not constitute a quote or guarantee of savings.</p>
+    <p>*3 Months Free offer: available to qualifying new customers only on select plans &mdash; $0 for the first three months of unlimited service on one line. After the promotional period, plans start as low as $15/month. Limited-time offer; <a href="https://affinitycellular.com/Support/Terms" target="_blank" rel="noopener">terms and conditions</a> apply. Eligible iPhone offer after 12 months is a limited-time promotion available to qualifying new customers; see terms for eligibility.</p>
+    <p>30-Day Money-Back Guarantee: phones may be returned within 30 days of purchase &mdash; provided total usage is under 30 minutes of talk time, 30 text messages, or 30 MB of data (whichever comes first) &mdash; for a refund of the activation fee, handset cost, and prorated plan cost. The cost of additional services is not refundable. See the full <a href="https://affinitycellular.com/Support/Returns" target="_blank" rel="noopener">Return Policy</a> for details.</p>
+    <p>Testimonials reflect the experiences of individual customers; savings and results may vary. Affinity Cellular operates on the Verizon nationwide network. Verizon, AT&amp;T, T-Mobile, Consumer Cellular, and Mint Mobile are trademarks of their respective owners; references do not imply endorsement or affiliation.</p>
+    <p>Questions about how your information is collected and used? See the <a href="https://affinitycellular.com/Support/Policy" target="_blank" rel="noopener">Privacy &amp; CPNI Policy</a>, email <a href="mailto:help@affinitycellular.com">help@affinitycellular.com</a>, or call customer support at (833)&nbsp;679-1090. Affinity Cellular, 4245 Kemp Blvd, Suite 120, Wichita Falls, TX 76308.</p>
+  </div>
+</footer>
+
 <script>
 (function(){
-  /* ---------- Evergreen countdown (per visitor, localStorage) ---------- */
-  var KEY='affinityCalcDeadline';
-  var SEED=((2*24+14)*60+37)*60+26; /* 2d 14h 37m 26s */
-  var deadline=parseInt(localStorage.getItem(KEY),10);
-  if(!deadline||deadline<Date.now()){
-    deadline=Date.now()+SEED*1000;
-    localStorage.setItem(KEY,deadline);
-  }
-  function pad(n){return (n<10?'0':'')+n;}
-  function tick(){
-    var s=Math.max(0,Math.floor((deadline-Date.now())/1000));
-    document.getElementById('cd-days').textContent=pad(Math.floor(s/86400));
-    document.getElementById('cd-hrs').textContent=pad(Math.floor(s%86400/3600));
-    document.getElementById('cd-min').textContent=pad(Math.floor(s%3600/60));
-    document.getElementById('cd-sec').textContent=pad(s%60);
-  }
-  tick();
-  setInterval(tick,1000);
-
   /* ---------- Calculator ---------- */
   var slider=document.getElementById('bill-slider');
   var billDisplay=document.getElementById('bill-display');
