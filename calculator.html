@@ -123,6 +123,13 @@
   .countbar .cb-sub{font-size:16px;color:#d5dde7;margin-top:3px;line-height:1.35;}
   .count-right{text-align:center;}
   .cb-static{font-size:18px;font-weight:700;color:#fff;line-height:1.45;}
+  .count-units{display:flex;gap:14px;justify-content:center;}
+  .cunit{
+    background:#fff;border-radius:8px;width:76px;padding:10px 6px 8px;
+    box-shadow:0 2px 6px rgba(0,0,0,.25);
+  }
+  .cunit .cu-num{color:var(--red);font-size:32px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;}
+  .cunit .cu-lbl{color:var(--navy);font-size:11px;font-weight:800;letter-spacing:1px;margin-top:4px;}
   .count-note{font-size:11.5px;font-weight:700;letter-spacing:.8px;color:#d5dde7;margin-top:8px;}
 
   /* ============ CALCULATOR ============ */
@@ -532,12 +539,17 @@
       </svg>
     </div>
     <div class="cb-copy">
-      <div class="cb-hurry"><span class="gold">LIMITED-TIME OFFER:</span> 3 MONTH FREE TRIAL</div>
-      <div class="cb-sub">Thousands of seniors switch <br>every month.</div>
+      <div class="cb-hurry"><span class="gold">HURRY!</span> THIS OFFER WON&rsquo;T LAST!</div>
+      <div class="cb-sub">Thousands of seniors switch<br>every month.</div>
     </div>
     <div class="count-right">
-      <div class="cb-static">Available to qualifying new customers, <br>while this promotion lasts.</div>
-      <div class="count-note">SEE FULL OFFER TERMS BELOW.</div>
+      <div class="count-units">
+        <div class="cunit"><div class="cu-num" id="cd-days">02</div><div class="cu-lbl">DAYS</div></div>
+        <div class="cunit"><div class="cu-num" id="cd-hrs">14</div><div class="cu-lbl">HRS</div></div>
+        <div class="cunit"><div class="cu-num" id="cd-min">37</div><div class="cu-lbl">MIN</div></div>
+        <div class="cunit"><div class="cu-num" id="cd-sec">26</div><div class="cu-lbl">SEC</div></div>
+      </div>
+      <div class="count-note">3 MONTH FREE TRIAL IS ONLY AVAILABLE FOR A LIMITED TIME.</div>
     </div>
   </div>
 </section>
@@ -871,6 +883,25 @@
 <script>
 (function(){
   /* ---------- Calculator ---------- */
+  /* ---------- Evergreen countdown (per visitor, localStorage) ---------- */
+  var KEY='affinityCalcDeadline';
+  var SEED=((2*24+14)*60+37)*60+26; /* 2d 14h 37m 26s */
+  var deadline=parseInt(localStorage.getItem(KEY),10);
+  if(!deadline||deadline<Date.now()){
+    deadline=Date.now()+SEED*1000;
+    localStorage.setItem(KEY,deadline);
+  }
+  function pad(n){return (n<10?'0':'')+n;}
+  function tick(){
+    var s=Math.max(0,Math.floor((deadline-Date.now())/1000));
+    document.getElementById('cd-days').textContent=pad(Math.floor(s/86400));
+    document.getElementById('cd-hrs').textContent=pad(Math.floor(s%86400/3600));
+    document.getElementById('cd-min').textContent=pad(Math.floor(s%3600/60));
+    document.getElementById('cd-sec').textContent=pad(s%60);
+  }
+  tick();
+  setInterval(tick,1000);
+
   var slider=document.getElementById('bill-slider');
   var billDisplay=document.getElementById('bill-display');
   var lines=1;

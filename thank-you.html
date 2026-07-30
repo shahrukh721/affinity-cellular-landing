@@ -418,8 +418,16 @@
       </div>
     </div>
     <div class="cd-mid">
-      <div class="exp">LIMITED-TIME OFFER</div>
-      <div class="cd-static">Available to new customers only,<br>while this promotion lasts.</div>
+      <div class="exp">OFFER EXPIRES IN:</div>
+      <div class="cd-units">
+        <div class="cd-box"><div class="v" id="cd-d">02</div><div class="l">DAYS</div></div>
+        <div class="cd-colon">:</div>
+        <div class="cd-box"><div class="v" id="cd-h">14</div><div class="l">HRS</div></div>
+        <div class="cd-colon">:</div>
+        <div class="cd-box"><div class="v" id="cd-m">37</div><div class="l">MIN</div></div>
+        <div class="cd-colon">:</div>
+        <div class="cd-box"><div class="v" id="cd-s">26</div><div class="l">SEC</div></div>
+      </div>
     </div>
     <a class="cd-cta" href="tel:8557638221">
       <span class="n">
@@ -628,6 +636,29 @@ document.getElementById('t-prev').onclick=function(){tStart=(tStart-1+TESTIMONIA
 document.getElementById('t-next').onclick=function(){tStart=(tStart+1)%TESTIMONIALS.length;renderTestimonials();};
 window.addEventListener('resize',renderTestimonials);
 renderTestimonials();
+
+/* ---------- Countdown (evergreen: 2d 14h 37m 26s per visitor, persisted) ---------- */
+(function(){
+  var KEY='ac_offer_deadline';
+  var DURATION=(2*24*3600+14*3600+37*60+26)*1000;
+  var deadline;
+  try{
+    deadline=parseInt(localStorage.getItem(KEY),10);
+    if(!deadline||deadline<Date.now()){deadline=Date.now()+DURATION;localStorage.setItem(KEY,String(deadline));}
+  }catch(e){deadline=Date.now()+DURATION;}
+  var el={d:document.getElementById('cd-d'),h:document.getElementById('cd-h'),m:document.getElementById('cd-m'),s:document.getElementById('cd-s')};
+  function pad(n){return (n<10?'0':'')+n;}
+  function tick(){
+    var left=Math.max(0,deadline-Date.now());
+    var sec=Math.floor(left/1000);
+    el.d.textContent=pad(Math.floor(sec/86400));
+    el.h.textContent=pad(Math.floor(sec%86400/3600));
+    el.m.textContent=pad(Math.floor(sec%3600/60));
+    el.s.textContent=pad(sec%60);
+  }
+  tick();
+  setInterval(tick,1000);
+})();
 
 </script>
 </body>
