@@ -304,6 +304,9 @@
     .btn-order{margin-left:0;}
   }
   @media (max-width:760px){
+    .order-box{padding:28px 18px;}
+    .btn-hurry{font-size:19px;white-space:nowrap;padding:12px 22px;}
+    .cd-cta .n{font-size:20px;white-space:nowrap;}
     .topbar-inner{justify-content:center;text-align:center;}
     .hero-media{position:relative;width:100%;}
     .hero-media > img{height:340px;}
@@ -611,7 +614,7 @@ function renderTestimonials(){
   for(var i=0;i<per;i++){
     var t=TESTIMONIALS[(tStart+i)%TESTIMONIALS.length];
     html+='<div class="t-card">'+starRow()
-      +'<div class="t-quote"><span class="qm">“</span><span>'+t.q+'"</span></div>'
+      +'<div class="t-quote"><span class="qm">“</span><span>'+t.q+'”</span></div>'
       +'<div class="t-meta"><div class="who"><div class="name">'+t.name+'</div><div class="loc">'+t.loc+'</div></div>'+avatarImg(t)+'</div>'
       +'</div>';
   }
