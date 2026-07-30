@@ -66,7 +66,7 @@
   .breadcrumb{
     padding:18px 0 6px;font-size:13px;color:#8a95a1;
   }
-  .breadcrumb a{color:#4a80c4;}
+  .breadcrumb a{color:#4a80c4;display:inline-block;padding:5px 0;}
   .breadcrumb .sep{margin:0 7px;color:#b6bec7;}
   .layout{
     display:flex;gap:40px;align-items:flex-start;padding:14px 0 60px;
@@ -117,7 +117,7 @@
   }
 
   /* ============ COMPARISON TABLE ============ */
-  .table-wrap{overflow-x:auto;margin:26px 0 8px;}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:26px 0 8px;}
   table.compare{
     border-collapse:separate;border-spacing:0;width:100%;
     font-size:13.5px;
@@ -250,7 +250,7 @@
   .faq .q.open .q-plus{transform:rotate(45deg);}
   .faq .q-body{display:none;font-size:13.5px;color:#5d6a78;padding:0 26px 14px 0;line-height:1.55;}
   .faq .q.open .q-body{display:block;}
-  .faq .see-all{display:inline-block;color:var(--red);font-weight:700;font-size:14px;margin-top:10px;}
+  .faq .see-all{display:inline-block;color:var(--red);font-weight:700;font-size:14px;margin-top:4px;padding:10px 0;}
 
   /* Trusted card */
   .trusted h3{
@@ -299,7 +299,7 @@
   .site-footer{background:var(--navy);color:#aab8c9;margin-top:44px;padding:30px 0 36px;}
   .footer-inner{max-width:1160px;margin:0 auto;padding:0 24px;}
   .f-links{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:14px;font-weight:700;margin-bottom:18px;}
-  .f-links a{color:#fff;}
+  .f-links a{color:#fff;display:inline-block;padding:8px 2px;}
   .f-links a:hover{text-decoration:underline;}
   .f-links span{color:#5d7189;}
   .site-footer p{font-size:11.5px;line-height:1.6;margin-bottom:10px;color:#aab8c9;}
@@ -327,6 +327,13 @@
     .features .feat{flex:1 1 45%;margin-bottom:18px;}
     .features .feat + .feat::before{display:none;}
   }
+  @media (max-width: 360px){
+    table.compare{font-size:9.5px;}
+    table.compare th,table.compare td{padding:6px 2px;}
+    table.compare thead th{font-size:9px;}
+    table.compare td.feature{font-size:10px;padding-right:1px;}
+    table.compare td.aff .price{font-size:11px;}
+  }
 </style>
 </head>
 <body>
@@ -342,7 +349,7 @@
       <div class="y-big">15 YEARS</div>
       <div class="y-small">OF TRUSTED SERVICE</div>
     </div>
-    <div class="callbox">
+    <a class="callbox" href="tel:8557638221">
       <div class="phone-ico">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -353,7 +360,7 @@
         <div class="c-num">855-763-8221</div>
         <div class="c-hours">Mon-Fri 8am-8pm CT&nbsp; | &nbsp;Sat-Sun 10am-7pm CT</div>
       </div>
-    </div>
+    </a>
   </div>
 </header>
 
@@ -381,7 +388,7 @@
 
       <!-- HERO IMAGE -->
       <div class="hero">
-        <img src="images/hero-couple.jpg" alt="Senior couple smiling at a smartphone together">
+        <img src="images/hero-couple.jpg" alt="Senior couple smiling at a smartphone together" fetchpriority="high">
       </div>
 
       <p>If you’re over 50, there’s a good chance you’re paying more for cell phone service than you need to.</p>
@@ -500,7 +507,7 @@
       <!-- TESTIMONIALS -->
       <div class="testimonial">
         <div class="t-avatar">
-          <img src="images/avatar-linda.jpg" alt="Linda M.">
+          <img src="images/avatar-linda.jpg" alt="Linda M." loading="lazy" decoding="async">
         </div>
         <div>
           <div class="t-text"><span class="t-quote-mark">“</span>I was paying over $120 a month with my old provider. Affinity Cellular cut my bill in half and the service is great!”</div>
@@ -511,7 +518,7 @@
 
       <div class="testimonial">
         <div class="t-avatar">
-          <img src="images/avatar-richard.jpg" alt="Robert T.">
+          <img src="images/avatar-richard.jpg" alt="Robert T." loading="lazy" decoding="async">
         </div>
         <div>
           <div class="t-text"><span class="t-quote-mark">“</span>Switching was so easy and I kept my number. I wish I had done this years ago.”</div>
