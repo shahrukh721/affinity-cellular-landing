@@ -344,6 +344,41 @@
   .site-footer p a{color:#cdd9e6;text-decoration:underline;}
 
   /* ============ RESPONSIVE ============ */
+  /* ============ LEAD FORM (inline + popup) ============ */
+  .lead-inline{margin-top:16px;}
+  .lead-inline iframe{width:100%;height:467px;border:none;border-radius:8px;display:block;}
+  .btn-qualify{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;background:var(--red);color:#fff;border:none;cursor:pointer;
+    font-size:18px;font-weight:900;letter-spacing:.6px;
+    padding:15px 18px;border-radius:8px;margin:22px 0 18px;
+    box-shadow:0 3px 10px rgba(224,27,34,.35);transition:background .15s;
+    font-family:inherit;
+  }
+  .btn-qualify:hover{background:var(--red-dark);}
+  .lead-modal{position:fixed;inset:0;z-index:2000;display:none;}
+  .lead-modal.open{display:block;}
+  .lead-modal-backdrop{position:absolute;inset:0;background:rgba(10,30,55,.62);}
+  .lead-modal-card{
+    position:relative;max-width:500px;width:calc(100% - 32px);
+    margin:5vh auto 0;background:#fff;border-radius:12px;overflow:hidden;
+    box-shadow:0 18px 60px rgba(0,0,0,.35);
+    display:flex;flex-direction:column;max-height:90vh;
+  }
+  .lead-modal-head{
+    background:var(--navy);color:#fff;font-weight:800;font-size:15.5px;letter-spacing:.6px;
+    padding:15px 46px 15px 18px;position:relative;text-align:center;line-height:1.3;
+  }
+  .lead-modal-close{
+    position:absolute;right:10px;top:50%;transform:translateY(-50%);
+    width:30px;height:30px;border:none;border-radius:50%;background:rgba(255,255,255,.15);
+    color:#fff;font-size:19px;line-height:1;cursor:pointer;font-weight:700;
+  }
+  .lead-modal-close:hover{background:var(--red);}
+  .lead-modal-body{padding:10px;overflow-y:auto;}
+  .lead-modal-body iframe{width:100%;height:467px;border:none;border-radius:8px;display:block;}
+  body.lead-modal-open{overflow:hidden;}
+
   /* ============ STICKY URGENCY BAR ============ */
   .urgent-bar{
     position:sticky;top:0;z-index:1000;
@@ -616,6 +651,25 @@
             <path d="M4 12h16"/><path d="M13 5l7 7-7 7"/>
           </svg>
         </button>
+        <div class="lead-inline" id="lead-inline" hidden>
+          <iframe
+            src="https://link.leadstacker.com/widget/form/37nJkqO1oqpdAsYYVm4K"
+            style="width:100%;height:467px;border:none;border-radius:8px"
+            id="inline-37nJkqO1oqpdAsYYVm4K"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Form 2"
+            data-height="467"
+            data-layout-iframe-id="inline-37nJkqO1oqpdAsYYVm4K"
+            data-form-id="37nJkqO1oqpdAsYYVm4K"
+            title="Form 2">
+          </iframe>
+        </div>
         <div class="secure-note">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5d6a78" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
           <span>Your information is secure and handled per the <a href="privacy-policy.html">Privacy Policy</a>.</span>
@@ -675,7 +729,12 @@
           </div>
         </div>
 
-        <div class="enough-bar">THAT&rsquo;S ENOUGH TO PAY FOR:</div>
+        <button class="btn-qualify" data-qualify>
+          SEE IF YOU ARE QUALIFIED
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12h16"/><path d="M13 5l7 7-7 7"/>
+          </svg>
+        </button>
         <div class="enough-grid">
           <div class="enough-item">
             <div class="ei-ico">
@@ -938,16 +997,64 @@
     document.getElementById('res-affinity').textContent=fmt(currentAnnual-savingsAnnual);
     document.getElementById('res-savings').textContent=fmt(savingsAnnual);
   }
+  var leadFormShown=false;
   document.getElementById('btn-calc').addEventListener('click',function(){
+    if(!leadFormShown){
+      leadFormShown=true;
+      var f=document.getElementById('lead-inline');
+      f.hidden=false;
+      f.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
     calculate();
     var panel=document.querySelector('.panel-results');
     panel.style.transition='none';panel.style.boxShadow='0 0 0 3px rgba(30,158,74,.45)';
     setTimeout(function(){panel.style.transition='box-shadow .8s';panel.style.boxShadow='';},60);
-    if(window.matchMedia('(max-width: 920px)').matches){
-      panel.scrollIntoView({behavior:'smooth',block:'start'});
-    }
+    panel.scrollIntoView({behavior:'smooth',block:'start'});
   });
 })();
+</script>
+
+<!-- ================= QUALIFY POPUP ================= -->
+<div class="lead-modal" id="lead-modal" role="dialog" aria-modal="true" aria-label="Check if you qualify for this offer">
+  <div class="lead-modal-backdrop" data-close-modal></div>
+  <div class="lead-modal-card">
+    <div class="lead-modal-head">
+      CHECK IF YOU QUALIFY FOR THIS OFFER
+      <button class="lead-modal-close" data-close-modal aria-label="Close">&times;</button>
+    </div>
+    <div class="lead-modal-body">
+      <iframe
+        src="https://link.leadstacker.com/widget/form/37nJkqO1oqpdAsYYVm4K"
+        style="width:100%;height:467px;border:none;border-radius:8px"
+        id="popup-37nJkqO1oqpdAsYYVm4K"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Form 2"
+        data-height="467"
+        data-layout-iframe-id="popup-37nJkqO1oqpdAsYYVm4K"
+        data-form-id="37nJkqO1oqpdAsYYVm4K"
+        title="Form 2">
+      </iframe>
+    </div>
+  </div>
+</div>
+<script src="https://link.leadstacker.com/js/form_embed.js"></script>
+
+<script>
+  (function(){
+    var modal=document.getElementById('lead-modal');
+    function openModal(e){if(e)e.preventDefault();modal.classList.add('open');document.body.classList.add('lead-modal-open');}
+    function closeModal(){modal.classList.remove('open');document.body.classList.remove('lead-modal-open');}
+    document.querySelectorAll('[data-qualify]').forEach(function(el){el.addEventListener('click',openModal);});
+    modal.querySelectorAll('[data-close-modal]').forEach(function(el){el.addEventListener('click',closeModal);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+  })();
 </script>
 
 </body>
